@@ -27,6 +27,7 @@ function App() {
       <Box name="3" num={3} />
       <Box name="4" num={4} />
       <Box name="5" num={5} />
+      <Box name="6" num={6} />
       <div>{counter}</div>
       <div>state:{counter2}</div>
       <button onClick={increase}>클릭!</button>
