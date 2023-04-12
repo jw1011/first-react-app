@@ -1,13 +1,15 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import Box from "./component/Box";
 
 function App() {
   let counter = 0;
   const [counter2, setCounter2] = useState(0);
+  const [value, setValue] = useState(0);
   const increase = () => {
     counter = counter + 1;
-    setCounter2(counter2 + 1);
+    //setCounter2(counter2 + 1);
+    setValue(value + 2);
     console.log("counter는", counter, "counter2 state는", counter2);
   };
 
@@ -20,14 +22,24 @@ function App() {
   //app 다시 re render
   // let counter=0을 거치면서 counter 값은 다시 0으로 초기화가 된다
   // state값은 update가 되면서 다시 render 한다.
+  useEffect(() => {
+    console.log("useEffect1 Fire");
+  }, []);
+
+  useEffect(() => {
+    console.log("useEffect2 Fire", counter2, value);
+  }, [counter2]);
+  useEffect(() => {
+    console.log("다른내용", value);
+  }, [value]);
   return (
     <div>
-      <Box name="1" num={1} />
+      {console.log("render")}
+      {/* <Box name="1" num={1} />
       <Box name="2" num={2} />
       <Box name="3" num={3} />
-      <Box name="4" num={4} />
-      <Box name="5" num={5} />
-      <Box name="6" num={6} />
+      <Box name="4" num={4} /> */}
+
       <div>{counter}</div>
       <div>state:{counter2}</div>
       <button onClick={increase}>클릭!</button>
